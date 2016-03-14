@@ -263,6 +263,13 @@ static struct pin pins_cam1[] = {
 		.fn_name	= "D19",
 		.mux_ctl	= { 0x00d4, 0x0130 },
 	}, {
+		.pin_name	= "EIM_DA10",
+		.gp_bank	= 3,
+		.gp_num		= 10,
+		.fn_name	= "DE",
+		.mux_ctl	= { 0x013c, 0x018c },
+		.is_ctl		= true,
+	}, {
 		.pin_name	= "EIM_AD11",
 		.gp_bank	= 3,
 		.gp_num		= 11,

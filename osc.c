@@ -371,7 +371,7 @@ int main(int argc, char *argv[]) {
 	fd = open("/dev/mem", O_RDWR);
 	assert(fd >= 0);
 
-	io_mux = mmap(NULL, 4096, PROT_READ|PROT_WRITE, 
+	io_mux = mmap(NULL, 4096, PROT_READ|PROT_WRITE,
 		      MAP_SHARED, fd, 0x20e0000);
 	assert(io_mux != MAP_FAILED);
 
@@ -391,7 +391,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	for (i = 0; i < ARRAY_SIZE(io_gpio); ++i) {
-		io_gpio[i] = mmap(NULL, 4096, PROT_READ|PROT_WRITE, 
+		io_gpio[i] = mmap(NULL, 4096, PROT_READ|PROT_WRITE,
 				  MAP_SHARED, fd, 0x209c000 + i*0x4000);
 		assert(io_gpio[i] != MAP_FAILED);
 	}
@@ -428,7 +428,7 @@ int main(int argc, char *argv[]) {
 			gpsr[i] = readl(io_gpio[i] + 8);
 
 		if (trig_pin) {
-			bool	now_trig = (gpsr[trig_pin->gp_bank - 1] & 
+			bool	now_trig = (gpsr[trig_pin->gp_bank - 1] &
 					    (1u << trig_pin->gp_num));
 			if (now_trig == last_trig)
 				continue;
@@ -459,5 +459,4 @@ int main(int argc, char *argv[]) {
 
 		printf("\n");
 	}
-	
 }

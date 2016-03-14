@@ -401,10 +401,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	for (i = 0; i < num_pins; ++i) {
-		void *	gp_base = io_gpio[pins[i].gp_bank - 1];
+		void *	mux_ctl = io_mux + pins[i].mux_ctl[mux_ctl_idx];
 
-		writel(readl(gp_base + 4) & ~(1u << pins[i].gp_num), gp_base + 4);
-		writel(5, io_mux + pins[i].mux_ctl[mux_ctl_idx]);
+		/* enable SION bit */
+		writel(readl(mux_ctl) | 0x10, mux_ctl);
 	}
 
 	for (i = 0; i < num_pins; ++i)

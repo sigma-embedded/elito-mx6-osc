@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include <sys/mman.h>
 
 #define ARRAY_SIZE(_a)	(sizeof(_a) / sizeof(_a)[0])
